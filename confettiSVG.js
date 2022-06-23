@@ -1,11 +1,13 @@
-function confetti(flakes = 200) {
+function confetti(flakes=100) {
 	const randInt = (min, max) => {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
 	let hh = window.innerHeight;
 	let ww = window.innerWidth;
 	let animatedRects = '';
-	flakes = !flakes ? flakes:200;
+	if (!flakes || Number.isNaN(flakes * 1)){
+		flakes = 100;
+	}
 	for (let i = 0; i < flakes; i++) {
 		let dur =`${randInt(40, 60)}`;
 		animatedRects += `<g transform="translate(${randInt(ww * -0.1, ww * 0.1)} -25) scale(1.${randInt(0, 6)})">
